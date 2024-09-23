@@ -13,9 +13,18 @@ namespace VseTShirts.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            List<Products> products = new List<Products>();
+            products.Add(new Products { Id = 1, Name = "Shirt 1", Price = 25 });
+            products.Add(new Products { Id = 2, Name = "Shirt 2", Price = 30 });
+            products.Add(new Products { Id = 3, Name = "Shirt 3", Price = 35 });
+            string result = "";
+            foreach (var product in products)
+            {
+                result += $"Id: {product.Id}, Name: {product.Name}, Price: {product.Price}\n";
+            }
+            return result;
         }
 
         public IActionResult Privacy(string a)
