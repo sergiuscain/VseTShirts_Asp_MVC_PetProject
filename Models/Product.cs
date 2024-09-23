@@ -1,8 +1,8 @@
 ﻿namespace VseTShirts.Models
 {
-    internal class Products
+    internal class Product
     {
-        int instanceCounter = 0;
+        private static int instanceCounter = 0;
         public int Id { get;}   //уникальный идентификатор
         public string Name { get;}  //название товара
         public string Description { get;} //описание товара
@@ -12,7 +12,7 @@
         public string ImageUrl { get;} //патч изображения товара
         public string Category { get;} //категория товара
 
-        public Products(string name, string description, decimal price, int quantity, decimal cost, string imageUrl, string category)
+        public Product(string name, string description, decimal price, int quantity, decimal cost, string imageUrl, string category)
         {
             this.Id = instanceCounter;
             this.Name = name;
@@ -23,6 +23,11 @@
             this.ImageUrl = imageUrl;
             this.Category = category;
             instanceCounter++;
+        }
+
+        public override string ToString()
+        {
+            return $"Id:{this.Id}\t\t\t Name: {this.Name}\t\t\tDescription: {this.Description}";
         }
     }
 }
