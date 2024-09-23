@@ -27,11 +27,7 @@ namespace VseTShirts
 
         internal Product GetById(int id)
         {
-            foreach (var product in products)
-            {
-                if (product.Id == id) { return product; }
-            }
-            return null;
+            return products.FirstOrDefault(product => product.Id == id);
         }
     }
 }
