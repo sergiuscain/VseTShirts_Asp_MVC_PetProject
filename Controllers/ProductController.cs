@@ -12,7 +12,7 @@ namespace VseTShirts.Controllers
         {
             storage = new ProductStorage();
         }
-        public string Product(int id)
+        public string Index(int id)
         {
             var product = storage.GetById(id);
             return product is null ? $"Товар c id {id} не найден" : product.ToString();
