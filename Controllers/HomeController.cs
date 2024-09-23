@@ -16,14 +16,9 @@ namespace VseTShirts.Controllers
             _logger = logger;
         }
 
-        public string Index()
+        public IActionResult Index()
         {
-            string result = "";
-            foreach (var item in products)
-            {
-                result += $"{item.ToString()}\n";
-            }
-            return result;
+            return View(products);
         }
 
         public IActionResult Privacy(string a)

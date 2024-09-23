@@ -1,5 +1,26 @@
-﻿@{
+﻿@model List<Product>
+@{
     ViewData["Title"] = "Home Page";
+
+}
+
+@foreach (var product in Model)
+{
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@product.ImagePath" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text"><small class="text-muted">Price: @product.Price</small></p>
+                    <a href="Product/Product/@product.Id" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
 <div class="text-center">

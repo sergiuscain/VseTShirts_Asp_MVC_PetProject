@@ -6,7 +6,7 @@ namespace VseTShirts
     {
         private static List<Product> products = new List<Product>()
         {
-            new Product("T-Shirt1", "Description T-Shirt", 1800, 90, 1300, "/images/tshirt1.jpg", "T-Shirt"),
+            new Product("T-Shirt1", "Description T-Shirt", 1800, 90, 1300, "/Resources/Images/tshirt1.jpg", "T-Shirt"),
             new Product("T-Shirt2", "Description T-Shirt", 1800, 15, 1300, "/images/tshirt2.jpg", "T-Shirt"),
             new Product("T-Shirt3", "Description T-Shirt", 1800, 55, 1300, "/images/tshirt3.jpg", "T-Shirt"),
             new Product("T-Shirt4", "Description T-Shirt", 1800, 2, 1300, "/images/tshirt4.jpg", "T-Shirt"),

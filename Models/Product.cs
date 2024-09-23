@@ -9,7 +9,7 @@
         public decimal Price { get;}  //цена
         public int Quantity { get;} //количество
         public decimal Cost { get;} //себестоимость
-        public string ImageUrl { get;} //патч изображения товара
+        public string ImagePath { get;} //патч изображения товара
         public string Category { get;} //категория товара
 
         public Product(string name, string description, decimal price, int quantity, decimal cost, string imageUrl, string category)
@@ -20,7 +20,7 @@
             this.Price = price;
             this.Quantity = quantity;
             this.Cost = cost;
-            this.ImageUrl = imageUrl;
+            this.ImagePath = imageUrl;
             this.Category = category;
             instanceCounter++;
         }
