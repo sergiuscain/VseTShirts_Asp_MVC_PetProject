@@ -4,10 +4,21 @@ namespace VseTShirts.Controllers
 {
     public class calculator : Controller
     {
-        public string plus(int a, int b)
+        public string index(int a, int b, char c)
         {
-
-            return $"{a} + {b} =  {a+b}";
+            if (c ==  '+')
+            {
+                return $"{a} + {b} =  {a + b}";
+            }
+            if (c == '-')
+            {
+                return $"{a} - {b} =  {a - b}";
+            }
+            if (c == '*')
+            {
+                return $"{a} * {b} =  {a * b}";
+            }
+            return "Неверное значение";
         }
     }
 }
