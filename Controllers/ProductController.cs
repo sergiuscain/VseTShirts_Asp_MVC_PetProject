@@ -4,7 +4,7 @@ using VseTShirts.Models;
 namespace VseTShirts.Controllers
 {
 
-    public class ProductController : ControllerBase
+    public class ProductController : Controller
     {
         private ProductStorage storage;
 
@@ -12,10 +12,10 @@ namespace VseTShirts.Controllers
         {
             storage = new ProductStorage();
         }
-        public string Index(int id)
+        public IActionResult Index(int id)
         {
             var product = storage.GetById(id);
-            return product is null ? $"Товар c id {id} не найден" : product.ToString();
+            return View(product);
         }
     }
 }

@@ -4,12 +4,6 @@
 
 }
 
-    // Add pagination or infinite scrolling here if needed}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 <div class="row">
 @foreach (var product in Model)
 {
@@ -18,7 +12,7 @@
             <a style="color:black" href="/product/Index/@product.Id">
                 <h5>@product.Name</h5>
             </a>
-            <img style="column-fill" href="@product.ImagePath" alt="@product.ImagePath" />
+            <img style="column-fill" width="200" src="@product.ImagePath" alt="@product.ImagePath" />
             <h5>@product.Price</h5>
             <a class="btn btn-dark" href="/cart/add/@product.Id" role="button">Добавить в корзину</a>
         </div>
