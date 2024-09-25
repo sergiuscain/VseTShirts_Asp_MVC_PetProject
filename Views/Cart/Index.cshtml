@@ -14,7 +14,9 @@ else
         {
             <div class="col-3 card shadow">
                 <div class="card-body">
-                    <h5>@item.Product.Name</h5>
+                     <a style="color:black" href="/product/Index/@item.Product.Id">
+                     <h5>@item.Product.Name</h5>
+                     </a>
                     <img style="column-fill" width="200" src="@item.Product.ImagePath" alt="@item.Product.ImagePath" />
                     <h5>Цена: @item.Product.Price</h5>
                     <h5>Количество: @item.Quantity</h5>
