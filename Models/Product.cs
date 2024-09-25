@@ -1,6 +1,6 @@
 ﻿namespace VseTShirts.Models
 {
-    internal class Product
+    public class Product
     {
         private static int instanceCounter = 0;
         public int Id { get;}   //уникальный идентификатор

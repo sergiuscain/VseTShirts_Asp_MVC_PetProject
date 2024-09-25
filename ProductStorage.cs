@@ -43,7 +43,7 @@ namespace VseTShirts
 
         internal List<Product>? GetAll() => products;
 
-        internal Product GetById(int id)
+        public static Product GetById(int id)
         {
             return products.FirstOrDefault(product => product.Id == id);
         }
