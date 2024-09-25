@@ -6,5 +6,26 @@
 }
 else 
 {
-    <h2>Корзина</h2>
+    <div class="row">
+        @foreach (var item in Model.Position)
+        {
+            <div class="col-3 card shadow">
+                <div class="card-body">
+                    <h5>@item.Product.Name</h5>
+                    <img style="column-fill" width="200" src="@item.Product.ImagePath" alt="@item.Product.ImagePath" />
+                    <h5>Цена: @item.Product.Price</h5>
+                    <h5>Количество: @item.Quantity</h5>
+                    <h5>Стоимость позиции: @item.Price</h5>
+                    <a class="btn btn-dark" href="/cart/remove?productId=@item.Product.Id" role="button">Удалить из корзины</a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h5>Стоимость: @Model.price</h5>
+            <a class="btn btn-dark" href="/home/index" role="button">Назад</a>
+            <a class="btn btn-dark" href="/cart/checkout" role="button">Оформить заказ</a>
+        </div>
+    </div>
 }
