@@ -34,5 +34,20 @@ namespace VseTShirts.Models
                 }
             }
         }
+
+        public void Remove(Product product, string userId)
+        {
+            var cart = GetCart(userId);
+            var cartItem = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
+            cartItem.Quantity--;
+            if (cartItem.Quantity <= 0)
+            {
+                cart.Position.Remove(cartItem);
+            }
+            if (cart.Position.Count <= 0)
+            {
+                carts.Remove(cart);
+            }
+        }
     }
 }

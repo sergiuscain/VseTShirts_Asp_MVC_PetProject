@@ -4,5 +4,6 @@
     {
         void Add(Product product, string userId);
         Cart GetCart(string userId);
+        void Remove(Product product,string userId);
     }
 }

@@ -20,8 +20,10 @@ else
                     <img style="column-fill" width="200" src="@item.Product.ImagePath" alt="@item.Product.ImagePath" />
                     <h5>Цена: @item.Product.Price</h5>
                     <h5>Количество: @item.Quantity</h5>
+                    <a class="btn btn-danger" href="/cart/remove?productId=@item.Product.Id" role="button">-</a>
+                    <a class="btn btn-dark" href="/cart/add?productId=@item.Product.Id" role="button">+</a>
                     <h5>Стоимость позиции: @item.Price</h5>
-                    <a class="btn btn-danger" href="/cart/remove?productId=@item.Product.Id" role="button">Удалить из корзины</a>
+                    <a class="btn btn-danger" href="/cart/remove?productId=@item.Product.Id" role="button">Удалить позицию</a>
                 </div>
             </div>
         }

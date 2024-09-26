@@ -36,10 +36,6 @@ namespace VseTShirts
 
         };
 
-        public ProductsInMemoryStorage()
-        {
-
-        }
 
         public List<Product>? GetAll() => products;
 
