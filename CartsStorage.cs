@@ -2,16 +2,16 @@
 
 namespace VseTShirts.Models
 {
-    public static class CartsStorage
+    public class CartsStorage
     {
-        private static List<Cart> carts = new List<Cart>();
+        private List<Cart> carts = new List<Cart>();
 
-        public static Cart GetCart(string userId)
+        public Cart GetCart(string userId)
         {
             return carts.FirstOrDefault(c => c.UserId == userId);
         }
 
-        internal static void Add(Product product, string userId)
+        public void Add(Product product, string userId)
         {
 
             var existingCart = GetCart(userId);

@@ -1,3 +1,5 @@
+using VseTShirts.Models;
+
 namespace VseTShirts
 {
     public class Program
@@ -8,6 +10,8 @@ namespace VseTShirts
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<CartsStorage>();
+            builder.Services.AddSingleton<ProductStorage>();
 
             var app = builder.Build();
 
