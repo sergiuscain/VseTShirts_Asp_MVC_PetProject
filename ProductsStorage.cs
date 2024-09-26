@@ -2,9 +2,9 @@
 
 namespace VseTShirts
 {
-    public class ProductStorage
+    public class ProductsStorage
     {
-        private static List<Product> products = new List<Product>()
+        private List<Product> products = new List<Product>()
         {
             new Product("T-Shirt1", "Белая футболка прямого кроя украшена спереди коленопреклоненным скелетом, знаковым для марки, а сзади — крупным вышитым крестом. Легкая модель с короткими рукавами и круглым вырезом изготовлена из гладкого тонкого хлопка , который отлично пропускает воздух и слегка тянется, не сковывая движения.", 1800, 90, 1300, "/img/2.png", "T-Shirt"),
             new Product("T-Shirt2", "Description T-Shirt", 1800, 15, 1300, "/img/2.png", "T-Shirt"),
@@ -36,14 +36,14 @@ namespace VseTShirts
 
         };
 
-        public ProductStorage()
+        public ProductsStorage()
         {
             
         }
 
-        internal List<Product>? GetAll() => products;
+        public List<Product>? GetAll() => products;
 
-        public static Product GetById(int id)
+        public  Product GetById(int id)
         {
             return products.FirstOrDefault(product => product.Id == id);
         }

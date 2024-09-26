@@ -5,15 +5,23 @@ namespace VseTShirts.Controllers
 {
     public class CartController : Controller
     {
+        private readonly CartsStorage cartsStorage;
+        private readonly ProductsStorage productStorage;
+
+        public CartController(CartsStorage cartsStorage, ProductsStorage productStorage)
+        {
+            this.productStorage = productStorage;
+            this.cartsStorage = cartsStorage;
+        }
         public IActionResult Index()
         {
-            var cart = CartsStorage.GetCart(Constants.UserId);
+            var cart = cartsStorage.GetCart(Constants.UserId);
             return View(cart);
         }
         public IActionResult Add(int productId)
         {
-            var product = ProductStorage.GetById(productId);
-            CartsStorage.Add(product, Constants.UserId);
+            var product = productStorage.GetById(productId);
+            cartsStorage.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
     }

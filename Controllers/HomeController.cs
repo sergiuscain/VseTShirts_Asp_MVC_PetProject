@@ -7,17 +7,17 @@ namespace VseTShirts.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private List<Product> products;
-        ProductStorage productsStorage = new ProductStorage();
+        private readonly ProductsStorage productStorage;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ProductsStorage productStorage)
         {
-            products = productsStorage.GetAll();
-            _logger = logger;
+            this.productStorage = productStorage;
         }
+
 
         public IActionResult Index()
         {
+            var products = productStorage.GetAll();
             return View(products);
         }
 

@@ -11,7 +11,7 @@ namespace VseTShirts
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<CartsStorage>();
-            builder.Services.AddSingleton<ProductStorage>();
+            builder.Services.AddSingleton<ProductsStorage>();
 
             var app = builder.Build();
 
