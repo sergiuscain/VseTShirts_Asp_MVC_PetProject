@@ -2,7 +2,7 @@
 
 namespace VseTShirts
 {
-    public class ProductsStorage
+    public class ProductsInMemoryStorage : IProductsStorage
     {
         private List<Product> products = new List<Product>()
         {
@@ -36,14 +36,14 @@ namespace VseTShirts
 
         };
 
-        public ProductsStorage()
+        public ProductsInMemoryStorage()
         {
-            
+
         }
 
         public List<Product>? GetAll() => products;
 
-        public  Product GetById(int id)
+        public Product GetById(int id)
         {
             return products.FirstOrDefault(product => product.Id == id);
         }

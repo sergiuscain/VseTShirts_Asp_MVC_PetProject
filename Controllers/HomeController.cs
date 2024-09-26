@@ -7,9 +7,9 @@ namespace VseTShirts.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ProductsStorage productStorage;
+        private readonly ProductsInMemoryStorage productStorage;
 
-        public HomeController(ProductsStorage productStorage)
+        public HomeController(ProductsInMemoryStorage productStorage)
         {
             this.productStorage = productStorage;
         }

@@ -5,10 +5,10 @@ namespace VseTShirts.Controllers
 {
     public class CartController : Controller
     {
-        private readonly CartsStorage cartsStorage;
-        private readonly ProductsStorage productStorage;
+        private readonly CartsInMemoryStorage cartsStorage;
+        private readonly ProductsInMemoryStorage productStorage;
 
-        public CartController(CartsStorage cartsStorage, ProductsStorage productStorage)
+        public CartController(CartsInMemoryStorage cartsStorage, ProductsInMemoryStorage productStorage)
         {
             this.productStorage = productStorage;
             this.cartsStorage = cartsStorage;

@@ -2,7 +2,7 @@
 
 namespace VseTShirts.Models
 {
-    public class CartsStorage
+    public class CartsInMemoryStorage : ICartsStorage
     {
         private List<Cart> carts = new List<Cart>();
 
@@ -17,7 +17,7 @@ namespace VseTShirts.Models
             var existingCart = GetCart(userId);
             if (existingCart == null)
             {
-                var positions = new List<CartPosition> { new CartPosition(Guid.NewGuid(), product.Name, product,1) };
+                var positions = new List<CartPosition> { new CartPosition(Guid.NewGuid(), product.Name, product, 1) };
                 var cart = new Cart(userId, Guid.NewGuid(), positions);
                 carts.Add(cart);
             }
