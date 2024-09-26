@@ -49,5 +49,15 @@ namespace VseTShirts.Models
                 carts.Remove(cart);
             }
         }
+        public void RemoveAll(Product product, string usertId)
+        {
+            var cart = GetCart(usertId);
+            var removedCartPosition = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
+            cart.Position.Remove(removedCartPosition);
+            if (cart.Position.Count <= 0)
+            {
+                carts.Remove(cart);
+            }
+        }
     }
 }
