@@ -6,8 +6,8 @@ namespace VseTShirts.Controllers
 
     public class ProductController : Controller
     {
-        private readonly ProductsInMemoryStorage productStorage;
-        public ProductController(ProductsInMemoryStorage productsStorage)
+        private readonly IProductsStorage productStorage;
+        public ProductController(IProductsStorage productsStorage)
         {
             this.productStorage = productsStorage;
         }
