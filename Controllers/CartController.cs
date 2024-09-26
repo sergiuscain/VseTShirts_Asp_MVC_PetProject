@@ -30,10 +30,15 @@ namespace VseTShirts.Controllers
             cartsStorage.Remove(product, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult RemoveAll(int productId)
+        public IActionResult RemovePosition(int productId)
         {
             var product = productStorage.GetById(productId);
-            cartsStorage.RemoveAll(product, Constants.UserId);
+            cartsStorage.RemovePosition(product, Constants.UserId);
+            return RedirectToAction("Index");
+        }
+        public IActionResult RemoveAll()
+        {
+            cartsStorage.RemoveAll(Constants.UserId);
             return RedirectToAction("Index");
         }
     }

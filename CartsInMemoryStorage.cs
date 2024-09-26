@@ -49,7 +49,7 @@ namespace VseTShirts.Models
                 carts.Remove(cart);
             }
         }
-        public void RemoveAll(Product product, string usertId)
+        public void RemovePosition(Product product, string usertId)
         {
             var cart = GetCart(usertId);
             var removedCartPosition = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
@@ -58,6 +58,11 @@ namespace VseTShirts.Models
             {
                 carts.Remove(cart);
             }
+        }
+
+        public void RemoveAll(string userId)
+        {
+            carts.Remove(carts.FirstOrDefault(p => p.UserId == userId));
         }
     }
 }
