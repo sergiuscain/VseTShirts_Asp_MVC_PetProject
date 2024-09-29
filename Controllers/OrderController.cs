@@ -22,7 +22,8 @@ namespace VseTShirts.Controllers
         public IActionResult Buy(Order order)
         {
             var cart = cartsStorage.GetCart(Constants.UserId);
-            ordersStorage.Add(cart, order);
+            order.Cart = cart;
+            ordersStorage.Add(order);
             cartsStorage.RemoveAll(Constants.UserId);
             return View(order);
         }

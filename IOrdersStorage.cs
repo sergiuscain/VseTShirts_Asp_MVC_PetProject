@@ -4,6 +4,6 @@ namespace VseTShirts
 {
     public interface IOrdersStorage
     {
-        void Add(Cart cart, Order order);
+        void Add( Order order);
     }
 }
