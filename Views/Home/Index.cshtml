@@ -7,11 +7,12 @@
 <div class="row">
 @foreach (var product in Model)
 {
-    <div class="col-3 card shadow">
+    <div class="col-3 card shadow bg-light">
         <div class="card-body">
             <a style="color:black" href="/product/Index/@product.Id">
                 <h5>@product.Name</h5>
             </a>
+            <a class="btn btn-success" href="/home/compare?productId=@product.Id">Сравнить</a>
             <img style="column-fill" width="200" src="@product.ImagePath" alt="@product.ImagePath" />
             <h5>@product.Price</h5>
             <a class="btn btn-success" href="/cart/add?productId=@product.Id" role="button">Добавить в корзину</a>

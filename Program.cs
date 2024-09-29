@@ -13,6 +13,7 @@ namespace VseTShirts
             builder.Services.AddSingleton<ICartsStorage ,CartsInMemoryStorage>();
             builder.Services.AddSingleton<IProductsStorage ,ProductsInMemoryStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
+            builder.Services.AddSingleton<ComparedProducts>();
 
             var app = builder.Build();
 

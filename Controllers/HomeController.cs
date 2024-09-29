@@ -8,10 +8,12 @@ namespace VseTShirts.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IProductsStorage productStorage;
+        public readonly ComparedProducts comparedProducts;
 
-        public HomeController(IProductsStorage productStorage)
+        public HomeController(IProductsStorage productStorage, ComparedProducts comparedProducts)
         {
             this.productStorage = productStorage;
+            this.comparedProducts = comparedProducts;
         }
 
 
@@ -31,5 +33,29 @@ namespace VseTShirts.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Compare(int productId)
+        {
+            var product1 = productStorage.GetById(productId);
+            if (comparedProducts.products[0] == null)
+            {
+                comparedProducts.products[0] = product1;
+                return RedirectToAction("Index");
+            }
+            else if (comparedProducts.products[1] == null)
+            {
+                comparedProducts.products[1] = product1;
+                return View(comparedProducts.products);
+            }
+            return View(comparedProducts.products);
+        }
+
+        public IActionResult RemoveCompare()
+        {
+            comparedProducts.RemoveAll();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
