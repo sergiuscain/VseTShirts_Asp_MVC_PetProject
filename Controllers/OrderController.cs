@@ -17,12 +17,14 @@ namespace VseTShirts.Controllers
         {
             return View();
         }
-        public IActionResult Buy()
+
+        [HttpPost]
+        public IActionResult Buy(Order order)
         {
             var cart = cartsStorage.GetCart(Constants.UserId);
-            ordersStorage.Add(cart);
+            ordersStorage.Add(cart, order);
             cartsStorage.RemoveAll(Constants.UserId);
-            return View();
+            return View(order);
         }
     }
 }
