@@ -22,7 +22,7 @@ namespace VseTShirts.Controllers
             return View();
         }
 
-        public IActionResult Register()
+        public IActionResult Register(RegisterModel register)
         {
             return View();
         }
