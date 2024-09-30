@@ -3,19 +3,24 @@
     <div>
          <label><h5>Логин:</h5></label>
             <br />
-         <input type="text" name="UserName" />
+         <input class="col-3" type="text" name="UserName" />
     </div>
 
      <div>
     <label><h5> Пароль:</h5></label>
             <br />
-    <input type="password" name="Password" />
+    <input class="col-3" type="password" name="Password" />
     </div>
      <div>
          <label>Запомнить меня:</label>
          <input type="checkbox" name="isRemembMe"
      </div>
-        <br />
-        <button class="btn-success" type="submit" name="submit" asp-controller="Accaunt" asp-action="Login">Войти</button>
+     <div>
+        <button class="btn-success col-3" type="submit" name="submit" asp-controller="Accaunt" asp-action="Login">Войти</button>
+     </div>
+     <div>
+        <a  href="/Accaunt/ResetPassword" class="btn shadow">Сброс пароля.</a>
+         <a class="btn shadow" href="/Accaunt/Register" target="_blank">Регистрация.</a>
+     </div>
 </div>
 </form>
