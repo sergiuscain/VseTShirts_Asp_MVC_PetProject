@@ -4,6 +4,11 @@ namespace VseTShirts.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly IProductsStorage productsStorage;
+        public AdminController(IProductsStorage productsStorage)
+        {
+            this.productsStorage = productsStorage;
+        }
         public IActionResult Orders()
         {
             return View();
@@ -11,7 +16,8 @@ namespace VseTShirts.Controllers
 
         public IActionResult Products()
         {
-            return View();
+            var products = productsStorage.GetAll();
+            return View(products);
         }
 
         public IActionResult Users()
