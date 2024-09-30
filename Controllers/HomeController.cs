@@ -56,6 +56,11 @@ namespace VseTShirts.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public IActionResult Search(string serachTxt)
+        {
+            var products = productStorage.GetAll();
+            var newProductsList = products.Where(p => p.Name.Contains(serachTxt)).ToList();
+            return View("Index", newProductsList);
+        }
     }
 }

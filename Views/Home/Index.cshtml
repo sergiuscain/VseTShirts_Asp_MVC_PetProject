@@ -3,11 +3,16 @@
     ViewData["Title"] = "Home Page";
 
 }
-
+<form method="post">
+    <div class="text-center">
+        <input type="text" name="serachTxt" />
+        <button asp-controller="Home" asp-action="Search" type="submit">Поиск</button>
+    </div>
+</form>
 <div class="row">
 @foreach (var product in Model)
 {
-    <div class="col-3 card shadow bg-light">
+    <div class="col-3 card shadow">
         <div class="card-body">
             <a style="color:black" href="/product/Index/@product.Id">
                 <h5>@product.Name</h5>
