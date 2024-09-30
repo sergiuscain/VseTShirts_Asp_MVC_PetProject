@@ -59,7 +59,7 @@ namespace VseTShirts.Controllers
         public IActionResult Search(string serachTxt)
         {
             var products = productStorage.GetAll();
-            var newProductsList = products.Where(p => p.Name.Contains(serachTxt)).ToList();
+            var newProductsList = products.Where(p => p.Name.ToLower().Contains(serachTxt.ToLower())).ToList();
             return View("Index", newProductsList);
         }
     }
