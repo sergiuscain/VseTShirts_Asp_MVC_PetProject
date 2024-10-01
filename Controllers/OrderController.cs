@@ -23,6 +23,11 @@ namespace VseTShirts.Controllers
         {
             var cart = cartsStorage.GetCart(Constants.UserId);
             order.Cart = cart;
+            order.User = new User
+            {
+                Name = Constants.UserName,
+                Email = Constants.UserEmail
+            };
             ordersStorage.Add(order);
             cartsStorage.RemoveAll(Constants.UserId);
             return View(order);

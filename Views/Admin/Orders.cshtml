@@ -1,7 +1,25 @@
-﻿<div class="row">
+﻿@model List<Order>
+
+<div class="row">Email
    @await Html.PartialAsync("AdminLeftMenu")
 
     <div class="col-9">
-        <h3>Список заказов</h3>
+        <h3>Список заказов:</h3>
+        @foreach (Order order in Model)
+        {
+            <div class="col-3">
+                <div class="border-success">
+                    <h5 class="card-text">ID заказа: @order.Id</h5>
+                    <h5 class="card-text">Дата: @order.DateAndTime.Date.ToString().Substring(0,10)</h5>
+                    <h5 class="card-text">Время: @order.DateAndTime.TimeOfDay.ToString().Substring(0,8)</h5>
+                    <h5 class="card-text">Статус: @order.Status</h5>
+                    <h5 class="card-text">Адрес получателя: @order.Address</h5>
+                    <h5 class="card-text">Номер телефона получателя: @order.User.PhoneNumber</h5>
+                    <h5 class="card-text">Email получателя: @order.User.Email</h5>
+                    <a class="btn border-success" href="/cart///">Список товаров в заказе</a>
+                </div>
+            </div>
+            <hr />
+        }
     </div>
 </div>

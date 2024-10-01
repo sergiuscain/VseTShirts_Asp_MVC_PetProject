@@ -6,13 +6,16 @@ namespace VseTShirts.Controllers
     public class AdminController : Controller
     {
         private readonly IProductsStorage productsStorage;
-        public AdminController(IProductsStorage productsStorage)
+        private readonly IOrdersStorage ordersStorage;
+        public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage)
         {
             this.productsStorage = productsStorage;
+            this.ordersStorage = ordersStorage;
         }
         public IActionResult Orders()
         {
-            return View();
+            List<Order> orders = ordersStorage.GetAll();
+            return View(orders);
         }
 
         public IActionResult Products()

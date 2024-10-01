@@ -3,7 +3,7 @@
     public class Cart
     {
         public Guid Id { get; set; }
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public List<CartPosition> Position { get; set; }
         public decimal price
         {
@@ -12,7 +12,7 @@
                 return Position.Sum(x => x.Price);
             }
         }
-        public Cart(string userId, Guid id, List<CartPosition> positions)
+        public Cart(Guid userId, Guid id, List<CartPosition> positions)
         {
             UserId = userId;
             Id = id;

@@ -1,19 +1,24 @@
-﻿<form method="post">
+﻿@model Order
+
+<form method="post">
 
 <div class="row">
     <div class="text-center">
-        <label>ФИО:</label>
+        <label asp-for="Name">ФИО:</label>
         <div>
-             <input type="text" name="name"/>
+             <input asp-for="Name"/>
+                <div><span asp-validation-for="Name"></span></div>
         </div>
-        <label>Адрес доставки:</label>
+        <label asp-for="Address">Адрес доставки:</label>
         <div>
-             <input type="text" name="address"/>
+             <input asp-for="Address"/>
         </div>
-        <label>Номер телефона:</label>
+        <div><span asp-validation-for="Address"></span></div>
+        <label asp-for="Phone">Номер телефона:</label>
         <div>
-              <input type="text" name="phone" />
+              <input asp-for="Phone"/>
         </div>
+            <div><span asp-validation-for="Phone"></span></div>
         <button class="btn btn-success" type="submit" asp-controller="Order" asp-action="Buy">Оформить заказ</button>
         
     </div>

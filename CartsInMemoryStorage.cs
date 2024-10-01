@@ -6,12 +6,12 @@ namespace VseTShirts.Models
     {
         private List<Cart> carts = new List<Cart>();
 
-        public Cart GetCart(string userId)
+        public Cart GetCart(Guid userId)
         {
             return carts.FirstOrDefault(c => c.UserId == userId);
         }
 
-        public void Add(Product product, string userId)
+        public void Add(Product product, Guid userId)
         {
 
             var existingCart = GetCart(userId);
@@ -35,7 +35,7 @@ namespace VseTShirts.Models
             }
         }
 
-        public void Remove(Product product, string userId)
+        public void Remove(Product product, Guid userId)
         {
             var cart = GetCart(userId);
             var cartItem = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
@@ -49,7 +49,7 @@ namespace VseTShirts.Models
                 carts.Remove(cart);
             }
         }
-        public void RemovePosition(Product product, string usertId)
+        public void RemovePosition(Product product, Guid usertId)
         {
             var cart = GetCart(usertId);
             var removedCartPosition = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
@@ -60,7 +60,7 @@ namespace VseTShirts.Models
             }
         }
 
-        public void RemoveAll(string userId)
+        public void RemoveAll(Guid userId)
         {
             carts.Remove(carts.FirstOrDefault(p => p.UserId == userId));
         }

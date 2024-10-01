@@ -2,10 +2,10 @@
 {
     public interface ICartsStorage
     {
-        void Add(Product product, string userId);
-        void RemoveAll(string userId);
-        void Remove(Product product, string userId);
-        Cart GetCart(string userId);
-        void RemovePosition(Product product,string userId);
+        void Add(Product product, Guid userId);
+        void RemoveAll(Guid userId);
+        void Remove(Product product, Guid userId);
+        Cart GetCart(Guid userId);
+        void RemovePosition(Product product,Guid userId);
     }
 }
