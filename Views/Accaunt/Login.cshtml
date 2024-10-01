@@ -1,20 +1,24 @@
-﻿
+﻿@model LoginModel
+
 <form method="post">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
     <div class="col text-center">
     <div>
-         <label><h5>Логин:</h5></label>
+         <label asp-for="UserName" ><h5>Логин:</h5></label>
             <br />
-         <input class="col-3" type="text" name="UserName" minlength="6" />
+         <input class="col-3" asp-for="UserName"/>
+            <div><span asp-validation-for="UserName"></span></div>
     </div>
 
      <div>
-    <label><h5> Пароль:</h5></label>
+    <label asp-for="Password"><h5> Пароль:</h5></label>
             <br />
-    <input class="col-3" type="password" name="Password"/>
+    <input class="col-3" type="password" asp-for="Password"/>
+            <div><span asp-validation-for="Password"></span></div>
     </div>
      <div>
-         <label>Запомнить меня:</label>
-         <input type="checkbox" name="isRemembMe" />
+         <label asp-for="isRemembMe">Запомнить меня:</label>
+         <input asp-for="isRemembMe"/>
      </div>
      <div>
         <button class="border-success col-3" type="submit" name="submit" asp-controller="Accaunt" asp-action="Login">Войти</button>

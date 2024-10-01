@@ -3,53 +3,61 @@
 <form method="post">
     <div class="col text-center">
         <div>
-            <label for="name">Название:</label>
+            <label asp-for="Name">Название:</label>
             <br />
-            <input type="text" id="name" name="name" required minlength="4"  maxlength="18"><br>
+            <input asp-for="Name"><br>
+            <div><span asp-validation-for="Name"></span></div>
         </div>
 
         <div>
-            <label for="description">Описание:</label>
+            <label asp-for="Description">Описание:</label>
             <br />
-            <input type="text" id="description" name="description" required minlength="10" maxlength="150"><br>
+            <input asp-for="Description"><br>
+            <div><span asp-validation-for="Description"></span></div>
         </div>
 
         <div>
-            <label for="price">Цена:</label>
+            <label asp-for="Price">Цена:</label>
             <br />
-            <input type="number" id="price" name="price" required min="10"><br>
+            <input asp-for="Price"><br>
+            <div><span asp-validation-for="Price"></span></div>
         </div>
         
         <div>
-             <label for="cost">Себестоимость:</label>
+             <label asp-for="Cost">Себестоимость:</label>
             <br />
-            <input type="number" id="cost" name="cost" required min="4"><br>
+            <input asp-for="Cost"><br>
+            <div><span asp-validation-for="Cost"></span></div>
         </div>
 
         <div>
-            <label for="quantity">Количество:</label>
+            <label asp-for="Quantity">Количество:</label>
             <br />
-            <input type="number" id="quantity" name="quantity" required min="1"><br>
+            <input asp-for="Quantity"><br>
+            <div><span asp-validation-for="Quantity"></span></div>
         </div>
 
         <div>
-            <label for="color">Цвет:</label>
+            <label asp-for="Color">Цвет:</label>
             <br />
-            <input type="text" id="color" name="color" required><br>
+            <input asp-for="Color"><br>
+            <div><span asp-validation-for="Color"></span></div>
         </div>
 
         <div>
-            <label for="size">Размер:</label>
+            <label asp-for="Size">Размер:</label>
             <br />
-            <input type="text" id="size" name="size" required><br>
+            <input asp-for="Size"><br>
+            <div><span asp-validation-for="Size"></span></div>
         </div>
         <div>
-            <label for="category">Категория:</label>
+            <label asp-for="Category">Категория:</label>
             <br />
-             <input type="text" id="category" name="category" required><br>
+             <input asp-for="Category"><br>
+             <div><span asp-validation-for="Category"></span></div>
         </div>
         <div>
-            <label for="ImagePath">Изображение:</label>
+            <label asp-for="ImagePath">Изображение:</label>
             <br />
             <input type="text" id="ImagePath" name="ImagePath" value="/img/2.jpg" required><br>
         </div>
