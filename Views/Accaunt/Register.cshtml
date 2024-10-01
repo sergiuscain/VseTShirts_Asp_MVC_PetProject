@@ -1,11 +1,12 @@
-﻿
+﻿@model RegisterModel
+
 <form method="post">
     <div class="col text-center">
 
      <div>
             <label>Email:</label>
             <br />
-            <input class="col-3" type="email" name="Email" minlength="5" maxlength="25" />
+            <input class="col-3" type="email" name="Email"  minlength="5" maxlength="25" />
      </div>
 
     <div>
@@ -23,7 +24,7 @@
      <div>
          <label>Подтверждение пароля:</label>
             <br />
-         <input class="col-3" type="password" name="ConfirmPassword" minlength="6" maxlength="20" />
+         <input class="col-3" type="password" name="ConfirmPassword" asp-for="ConfirmPassword" minlength="6" maxlength="20" />
      </div>
 
      <div>
@@ -35,7 +36,7 @@
      <dev>
             <label>Номер телефона:</label>
             <br />
-            <input class="col-3" type="text" name="PhoneNumber" min="9" max="20" />
+            <input class="col-3" type="tel" name="PhoneNumber" min="9" max="20" />
      </dev>
 
 
