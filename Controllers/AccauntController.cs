@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -14,7 +13,7 @@ namespace VseTShirts.Controllers
         [HttpPost]
         public IActionResult Login( LoginModel login)
         {
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Logout()

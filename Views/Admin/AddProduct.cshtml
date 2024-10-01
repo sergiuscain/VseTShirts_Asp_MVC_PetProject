@@ -1,34 +1,35 @@
-﻿
+﻿@model ProductModel
+
 <form method="post">
     <div class="col text-center">
         <div>
             <label for="name">Название:</label>
             <br />
-            <input type="text" id="name" name="name" required><br>
+            <input type="text" id="name" name="name" required minlength="4"  maxlength="18"><br>
         </div>
 
         <div>
             <label for="description">Описание:</label>
             <br />
-            <input type="text" id="description" name="description" required><br>
+            <input type="text" id="description" name="description" required minlength="10" maxlength="150"><br>
         </div>
 
         <div>
             <label for="price">Цена:</label>
             <br />
-            <input type="number" id="price" name="price" required><br>
+            <input type="number" id="price" name="price" required min="10"><br>
         </div>
         
         <div>
              <label for="cost">Себестоимость:</label>
             <br />
-            <input type="text" id="cost" name="cost" required><br>
+            <input type="number" id="cost" name="cost" required min="4"><br>
         </div>
 
         <div>
             <label for="quantity">Количество:</label>
             <br />
-            <input type="number" id="quantity" name="quantity" required><br>
+            <input type="number" id="quantity" name="quantity" required min="1"><br>
         </div>
 
         <div>
