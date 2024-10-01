@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
 {
@@ -28,6 +29,30 @@ namespace VseTShirts.Controllers
         public IActionResult Roles()
         {
             return View();
+        }
+
+        public IActionResult DeleteProduct(int ProductId)
+        {
+            productsStorage.Delete(ProductId);
+            var products = productsStorage.GetAll();
+            return View("Products", products);
+        }
+
+        public IActionResult QuantitiReduce(int ProductId)
+        {
+            productsStorage.QuantitiReduce(ProductId);
+            var products = productsStorage.GetAll();
+            return View("Products", products);
+        }
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+        public IActionResult CreateProduct(ProductModel product)
+        {
+            productsStorage.Add(ProductModel.ToProduct(product));
+            var products = productsStorage.GetAll();
+            return View("Products", products);
         }
     }
 }

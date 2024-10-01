@@ -1,0 +1,60 @@
+﻿
+<form method="post">
+    <div class="col text-center">
+        <div>
+            <label for="name">Название:</label>
+            <br />
+            <input type="text" id="name" name="name" required><br>
+        </div>
+
+        <div>
+            <label for="description">Описание:</label>
+            <br />
+            <input type="text" id="description" name="description" required><br>
+        </div>
+
+        <div>
+            <label for="price">Цена:</label>
+            <br />
+            <input type="number" id="price" name="price" required><br>
+        </div>
+        
+        <div>
+             <label for="cost">Себестоимость:</label>
+            <br />
+            <input type="text" id="cost" name="cost" required><br>
+        </div>
+
+        <div>
+            <label for="quantity">Количество:</label>
+            <br />
+            <input type="number" id="quantity" name="quantity" required><br>
+        </div>
+
+        <div>
+            <label for="color">Цвет:</label>
+            <br />
+            <input type="text" id="color" name="color" required><br>
+        </div>
+
+        <div>
+            <label for="size">Размер:</label>
+            <br />
+            <input type="text" id="size" name="size" required><br>
+        </div>
+        <div>
+            <label for="category">Категория:</label>
+            <br />
+             <input type="text" id="category" name="category" required><br>
+        </div>
+        <div>
+            <label for="ImagePath">Изображение:</label>
+            <br />
+            <input type="text" id="ImagePath" name="ImagePath" value="/img/2.jpg" required><br>
+        </div>
+        <div>
+            <button class="btn border-success" type="submit" asp-controller="Admin" asp-action="CreateProduct">Создать продукт</button>
+        </div>
+
+    </div>
+</form>

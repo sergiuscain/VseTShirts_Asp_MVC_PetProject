@@ -1,6 +1,7 @@
-﻿namespace VseTShirts.Models
+﻿
+namespace VseTShirts.Models
 {
-    public class Product
+    public  class ProductModel
     {
         private static int instanceCounter = 0;
         public int Id { get;}   //уникальный идентификатор
@@ -14,25 +15,9 @@
         public string Color { get; set; }
         public string Size { get; set; }
 
-
-        public Product(string name, string description, decimal price, int quantity, decimal cost, string imageUrl, string category, string color, string size)
+        public static Product ToProduct(ProductModel model)
         {
-            this.Id = instanceCounter;
-            this.Name = name;
-            this.Description = description;
-            this.Price = price;
-            this.Quantity = quantity;
-            this.Cost = cost;
-            this.ImagePath = imageUrl;
-            this.Category = category;
-            instanceCounter++;
-            Color = color;
-            Size = size;
-        }
-
-        public override string ToString()
-        {
-            return $"Id:{this.Id}\t\t\t Name: {this.Name}\t\t\tDescription: {this.Description}";
+            return new Product(model.Name, model.Description, model.Price, model.Quantity, model.Cost, model.ImagePath, model.Category, model.Color, model.Size);
         }
     }
 }
