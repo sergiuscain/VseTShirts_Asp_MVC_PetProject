@@ -23,7 +23,7 @@ namespace VseTShirts.Models
             }
             else
             {
-                var existingCartItem = existingCart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
+                var existingCartItem = existingCart?.Position?.FirstOrDefault(p => p.Product.Id == product.Id);
                 if (existingCartItem != null)
                 {
                     existingCartItem.Quantity++;
