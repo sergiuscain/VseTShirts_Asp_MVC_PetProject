@@ -24,9 +24,9 @@
                             <select name="status" asp-for="@order.Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select>
                             <button type="submit" asp-controller="Admin" asp-action="UpdateStatus" asp-route-id="@order.Id">Обновить</button>
                        </th>
-                       <th class="btn btn-danger" href="/Order/Del?id=@order.Id">Удалить заказ!</th>
+                       <th class="btn btn-danger"><a class="btn" href="/Admin/DelOrder?id=@order.Id">Удалить заказ!</a></th>
                    </tr>
-                        <th class="btn border-success"><a class="btn border-success" href="/Order/Order?id=@order.Id">Список товаров</a></th>
+                        <th class="btn border-success"><a class="btn" href="/Order/Order?id=@order.Id">Список товаров</a></th>
                    <tr>
                    </tr>
                 </table>

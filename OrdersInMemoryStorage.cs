@@ -26,5 +26,11 @@ namespace VseTShirts
         {
             orders.FirstOrDefault(o=> o.Id == id).Status = status;
         }
+
+        public void RemoveById(int id)
+        {
+            var removedOrder = orders.FirstOrDefault(o => o.Id == id);
+            orders.Remove(removedOrder);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace VseTShirts
         List<Order> GetAll();
         Order GetById(int id);
         void UpdateStatus(int id, OrderStatus status);
+        void RemoveById(int id);
     }
 }

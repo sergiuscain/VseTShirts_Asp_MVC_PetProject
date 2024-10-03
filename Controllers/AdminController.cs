@@ -64,5 +64,11 @@ namespace VseTShirts.Controllers
             ordersStorage.UpdateStatus(id, status);
             return RedirectToAction("Orders");
         }
+
+        public IActionResult DelOrder(int id)
+        {
+            ordersStorage.RemoveById(id);
+            return RedirectToAction("Orders");
+        }
     }
 }
