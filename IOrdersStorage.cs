@@ -8,5 +8,6 @@ namespace VseTShirts
         void Remove( Order order );
         List<Order> GetAll();
         Order GetById(int id);
+        void UpdateStatus(int id, OrderStatus status);
     }
 }

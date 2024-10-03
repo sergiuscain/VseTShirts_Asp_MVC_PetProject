@@ -16,7 +16,7 @@
         @foreach (var item in Model.Cart.Position)
         {
             <tr>
-                <td>@item.Product.Name</td>
+                <td><a href="/Product/Index?Id=@item.Product.Id">@item.Product.Name</a></td>
                 <td>@item.Quantity</td>
                 <td>@item.Product.Price</td>
                 <td>@item.Price</td>

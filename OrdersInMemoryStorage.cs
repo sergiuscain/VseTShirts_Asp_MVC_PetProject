@@ -21,5 +21,10 @@ namespace VseTShirts
             var order = orders.FirstOrDefault(o => o.Id == id);
             return order;
         }
+
+        public void UpdateStatus(int id, OrderStatus status)
+        {
+            orders.FirstOrDefault(o=> o.Id == id).Status = status;
+        }
     }
 }

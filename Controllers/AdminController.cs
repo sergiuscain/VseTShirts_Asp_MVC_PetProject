@@ -57,5 +57,12 @@ namespace VseTShirts.Controllers
             var products = productsStorage.GetAll();
             return View("Products", products);
         }
+
+        [HttpPost]
+        public IActionResult UpdateStatus(int id ,OrderStatus status)
+        {
+            ordersStorage.UpdateStatus(id, status);
+            return RedirectToAction("Orders");
+        }
     }
 }

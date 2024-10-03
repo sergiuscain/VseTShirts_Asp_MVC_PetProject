@@ -22,7 +22,7 @@ namespace VseTShirts.Models
         [Required(ErrorMessage = "Обязательное поле")]
         [MinLength(9, ErrorMessage = "Номер слишком короткий")]
         public string Phone { get; set; }
-        public string Status { get; set; }
+        public OrderStatus Status { get; set; }
 
         public DateTime DateAndTime { get; set; }
 
@@ -31,7 +31,12 @@ namespace VseTShirts.Models
         {
             Id = idNumerator++;
             DateAndTime = DateTime.Now;
-            Status = "Создан";
+            Status = OrderStatus.Создан;
         }
     }
+}
+
+public enum OrderStatus
+{
+    Создан, Удален, Одобрен, ВДоставке, ОжидаетОплату, ОжидаетПолучение, Получен
 }

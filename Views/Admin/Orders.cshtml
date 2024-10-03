@@ -1,9 +1,10 @@
 ﻿@model List<Order>
 
-<div class="row">Email
+<div class="row">
    @await Html.PartialAsync("AdminLeftMenu")
 
     <div class="col">
+        <form method="post">
         <h3>Список заказов:</h3>
         @foreach (Order order in Model)
         {
@@ -18,15 +19,20 @@
                    <tr>
                        <th  class="btn border-success">Номер телефона получателя: @order.Phone</th>
                        <th  class="btn border-success">Статус заказа: @order.Status</th>
-                       <th class="btn border-success"><a asp-action="EditStatus">Изменить статус</a></th>
+                       <th class="btn border-success">
+                            Изменить статус:
+                            <select name="status" asp-for="@order.Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select>
+                            <button type="submit" asp-controller="Admin" asp-action="UpdateStatus" asp-route-id="@order.Id">Обновить</button>
+                       </th>
                        <th class="btn btn-danger" href="/Order/Del?id=@order.Id">Удалить заказ!</th>
                    </tr>
+                        <th class="btn border-success"><a class="btn border-success" href="/Order/Order?id=@order.Id">Список товаров</a></th>
                    <tr>
-                        <th class="btn border-success"><a class="btn border-success" href="/order/order?@order.Id">Список товаров</a></th>
                    </tr>
                 </table>
             </div>
             <hr />
         }
+        </form>
     </div>
 </div>
