@@ -7,5 +7,6 @@ namespace VseTShirts
         void Add( Order order);
         void Remove( Order order );
         List<Order> GetAll();
+        Order GetById(int id);
     }
 }

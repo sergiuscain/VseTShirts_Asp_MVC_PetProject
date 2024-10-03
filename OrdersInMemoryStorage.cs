@@ -15,5 +15,11 @@ namespace VseTShirts
             orders.Remove(order);
         }
         public List<Order> GetAll() => orders;
+
+        public Order GetById(int id)
+        {
+            var order = orders.FirstOrDefault(o => o.Id == id);
+            return order;
+        }
     }
 }

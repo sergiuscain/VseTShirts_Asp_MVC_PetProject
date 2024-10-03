@@ -6,7 +6,8 @@ namespace VseTShirts.Models
 {
     public class Order
     {
-        public Guid Id { get; set; }
+        private static int idNumerator = 0;
+        public int Id { get; set; }
 
         public User User { get; set; }
 
@@ -28,7 +29,7 @@ namespace VseTShirts.Models
         public Cart Cart { get; set; }
         public Order ()
         {
-            Id = Guid.NewGuid();
+            Id = idNumerator++;
             DateAndTime = DateTime.Now;
             Status = "Создан";
         }

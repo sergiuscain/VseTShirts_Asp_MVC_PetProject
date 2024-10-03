@@ -32,5 +32,11 @@ namespace VseTShirts.Controllers
             cartsStorage.RemoveAll(Constants.UserId);
             return View(order);
         }
+
+        public IActionResult Order(int id)
+        {
+            var order = ordersStorage.GetById(id);
+            return View(order);
+        }
     }
 }
