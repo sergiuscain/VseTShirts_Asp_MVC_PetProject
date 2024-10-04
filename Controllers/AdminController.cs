@@ -7,10 +7,12 @@ namespace VseTShirts.Controllers
     {
         private readonly IProductsStorage productsStorage;
         private readonly IOrdersStorage ordersStorage;
-        public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage)
+        private readonly IRolesStorage rolesStorage;
+        public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage, IRolesStorage rolesStorage)
         {
             this.productsStorage = productsStorage;
             this.ordersStorage = ordersStorage;
+            this.rolesStorage = rolesStorage;
         }
         public IActionResult Orders()
         {
@@ -31,7 +33,8 @@ namespace VseTShirts.Controllers
 
         public IActionResult Roles()
         {
-            return View();
+            var roles = rolesStorage.GetAll();
+            return View(roles);
         }
 
         public IActionResult DeleteProduct(int ProductId)

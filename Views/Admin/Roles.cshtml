@@ -1,7 +1,27 @@
-﻿<div class="row">
+﻿@model List<Role>
+<div class="row">
     @await Html.PartialAsync("AdminLeftMenu")
-
-    <div class="col-9">
-        <h3>Роли пользователей:</h3>
+    @if (Model is null || Model.Count < 1)
+    {
+        <div class="col-3 btn border-danger"><h4 class="align-content-center">Упс, Список ролей пуст</h4></div>
+    }
+    else
+    {
+        <div class="col-9">
+            <h3>Роли пользователей:</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Название</th>
+                    <th>Описание роли</th>
+                </tr>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>@role.Description</td>
+                    </tr>
+                }
+        </table>
     </div>
-</div>
+    }
+</div >
