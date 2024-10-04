@@ -15,7 +15,7 @@
                 <th>Цена</th>
                 <th>Себестоимость</th>
                 <th>Количество</th>
-                <th>Уменьшить количнство товара на 1</th>
+                <th>Уменьшить / Увеличить остаток на складе</th>
                 <th>Действия</th>
             </tr>
             @foreach (var product in Model)
@@ -26,9 +26,11 @@
                     <td>@product.Price</td>
                     <td>@product.Cost</td>
                     <td>@product.Quantity</td>
-                    <td><a class="btn border-primary" href="/Admin/QuantitiReduce?ProductId=@product.Id">-</a></td>
                     <td>
-                        <a class="btn border-success" href="/Admin/EditProduct?ProductId=@product.Id">Изменить</a>
+                        <a class="btn border-primary" href="/Admin/QuantitiReduce?ProductId=@product.Id">-</a> 
+                        <a class="btn border-primary" href="/Admin/QuantityIncrease?ProductId=@product.Id">+</a></td>
+                    <td>
+                        <a class="btn border-success" href="/Admin/EditProduct?Id=@product.Id">Изменить</a>
                         <a class="btn border-danger" href="/Admin/DeleteProduct?ProductId=@product.Id">Удалить</a>
                     </td>
                 </tr>

@@ -6,7 +6,7 @@ namespace VseTShirts.Models
     public  class ProductModel
     {
         private static int instanceCounter = 0;
-        public int Id { get;}   //уникальный идентификатор
+        public int Id { get; set; }   //уникальный идентификатор
 
         [Required(ErrorMessage = "Обязательное поле")]
         [MinLength(4, ErrorMessage = "Слишком короткое название")]

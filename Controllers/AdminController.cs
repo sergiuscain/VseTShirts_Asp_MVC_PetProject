@@ -41,12 +41,20 @@ namespace VseTShirts.Controllers
             return View("Products", products);
         }
 
-        public IActionResult QuantitiReduce(int ProductId)
+        public IActionResult QuantitiReduce(int ProductId) // Уменьшение количества товара на складе
         {
             productsStorage.QuantitiReduce(ProductId);
             var products = productsStorage.GetAll();
             return View("Products", products);
         }
+
+        public IActionResult QuantityIncrease(int ProductId)  //Увеличение количества товара на складе
+        {
+            productsStorage.QuantityIncrease(ProductId);
+            var products = productsStorage.GetAll();
+            return View("Products", products);
+        }
+
         public IActionResult AddProduct()
         {
             return View();
@@ -58,7 +66,18 @@ namespace VseTShirts.Controllers
             return View("Products", products);
         }
 
-        [HttpPost]
+        public IActionResult EditProduct(int id)
+        {
+                return View(productsStorage.GetById(id));
+        }
+
+            [HttpPost]  
+        public ActionResult SaveEditedProduct(ProductModel newProduct)
+        {
+            productsStorage.EditProduct(newProduct.Id, ProductModel.ToProduct(newProduct));
+            return RedirectToAction("Products");
+        }
+
         public IActionResult UpdateStatus(int id ,OrderStatus status)
         {
             ordersStorage.UpdateStatus(id, status);

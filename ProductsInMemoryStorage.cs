@@ -28,6 +28,13 @@ namespace VseTShirts
             products.Remove(products.FirstOrDefault(p=>p.Id==productId));
         }
 
+        public void EditProduct(int id, Product newProduct)
+        {
+            products.Remove(products.FirstOrDefault(p => p.Id == id));
+            newProduct.Id = id;
+            products.Add(newProduct);
+        }
+
         public List<Product>? GetAll() => products;
 
         public Product GetById(int id)
@@ -42,6 +49,13 @@ namespace VseTShirts
                 product.Quantity--;
             if (product.Quantity <= 0)
                 products.Remove(product);
+        }
+
+        public void QuantityIncrease(int productId)
+        {
+            var product = products.FirstOrDefault(p => p.Id == productId);
+            if (product != null)
+                product.Quantity++;
         }
     }
 }

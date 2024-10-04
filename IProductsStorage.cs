@@ -9,5 +9,7 @@ namespace VseTShirts
         Product GetById(int id);
         void QuantitiReduce(int productId);
         void Add(Product product);
+        void QuantityIncrease(int productId);
+        void EditProduct(int id, Product newProduct);
     }
 }

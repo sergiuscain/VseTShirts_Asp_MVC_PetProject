@@ -3,7 +3,7 @@
     public class Product
     {
         private static int instanceCounter = 0;
-        public int Id { get;}   //уникальный идентификатор
+        public int Id { get; set; }   //уникальный идентификатор
         public string Name { get; set; }  //название товара
         public string Description { get; set; } //описание товара
         public decimal Price { get; set; }  //цена
