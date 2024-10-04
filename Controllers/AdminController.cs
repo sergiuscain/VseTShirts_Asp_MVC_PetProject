@@ -92,5 +92,31 @@ namespace VseTShirts.Controllers
             ordersStorage.RemoveById(id);
             return RedirectToAction("Orders");
         }
+
+        public IActionResult AddRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddRole(Role role)
+        {
+            if (rolesStorage.GetByName(role.Name) != null)
+            {
+                ModelState.AddModelError("Name", "Роль уже существует!");
+            }
+            if (ModelState.IsValid)
+            {
+                rolesStorage.Add(role);
+                return RedirectToAction("Roles");
+            }
+            return View(role);
+        }
+
+        public ActionResult RemoveRole(string name)
+        {
+            rolesStorage.Remove(rolesStorage.GetByName(name));
+            return RedirectToAction("Roles");
+        }
     }
 }
