@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VseTShirts.Models;
 
-namespace VseTShirts.Controllers
+namespace VseTShirts.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    [Area("Admin")]
+    [Route("admin/[controller]/[action]")]
+    public class HomeController : Controller
     {
         private readonly IProductsStorage productsStorage;
         private readonly IOrdersStorage ordersStorage;
         private readonly IRolesStorage rolesStorage;
-        public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage, IRolesStorage rolesStorage)
+        public HomeController(IProductsStorage productsStorage, IOrdersStorage ordersStorage, IRolesStorage rolesStorage)
         {
             this.productsStorage = productsStorage;
             this.ordersStorage = ordersStorage;
@@ -71,17 +73,17 @@ namespace VseTShirts.Controllers
 
         public IActionResult EditProduct(int id)
         {
-                return View(productsStorage.GetById(id));
+            return View(productsStorage.GetById(id));
         }
 
-            [HttpPost]  
+        [HttpPost]
         public ActionResult SaveEditedProduct(ProductModel newProduct)
         {
             productsStorage.EditProduct(newProduct.Id, ProductModel.ToProduct(newProduct));
             return RedirectToAction("Products");
         }
 
-        public IActionResult UpdateStatus(int id ,OrderStatus status)
+        public IActionResult UpdateStatus(int id, OrderStatus status)
         {
             ordersStorage.UpdateStatus(id, status);
             return RedirectToAction("Orders");
