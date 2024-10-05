@@ -17,5 +17,18 @@ namespace VseTShirts.Areas.Admin.Controllers
             var users = _accountManager.GetAll();
             return View(users);
         }
+
+        public IActionResult Block(uint id)
+        {
+            return View();
+        }
+        public IActionResult Del(uint id)
+        {
+            return View();
+        }
+        public IActionResult EditRole(uint id)
+        {
+            return View();
+        }
     }
 }

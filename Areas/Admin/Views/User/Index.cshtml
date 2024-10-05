@@ -17,7 +17,7 @@
                 <th>Логин</th>
                 <th>Email</th>
                 <th>ID</th>
-                <th>Заблокировать пользователя</th>
+                <th>Действия</th>
             </tr>
             @foreach (var user in Model)
             {
@@ -25,11 +25,18 @@
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
                     <td>@user.Id</td>
-                    <td><a class="btn btn-danger"
-                        asp-area="Admin"
-                        asp-controller="User"
-                        asp-action="Block"
-                        asp-route-name="@user.UserName">Block</a></td>
+                    <td>
+                       <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Действия:
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Block">Заблокировать</a></li>
+                                     <li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Del" >Удалить аккаунт</a></li>
+                                     <li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRole" >Права доступа</a></li>
+                        </ul>
+                       </div>
+                    </td>
                 </tr>
             }
          </table>
