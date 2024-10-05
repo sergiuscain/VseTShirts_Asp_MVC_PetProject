@@ -22,21 +22,21 @@ namespace VseTShirts.Areas.Admin.Controllers
         {
             productsStorage.Delete(Id);
             var products = productsStorage.GetAll();
-            return View("Index", products);
+            return View(nameof(Index), products);
         }
 
         public IActionResult QuantitiReduce(int id) // Уменьшение количества товара на складе
         {
             productsStorage.QuantitiReduce(id);
             var products = productsStorage.GetAll();
-            return View("Index", products);
+            return View(nameof(Index), products);
         }
 
         public IActionResult QuantityIncrease(int id)  //Увеличение количества товара на складе
         {
             productsStorage.QuantityIncrease(id);
             var products = productsStorage.GetAll();
-            return View("Index", products);
+            return View(nameof(Index), products);
         }
 
         public IActionResult Add()
@@ -47,7 +47,7 @@ namespace VseTShirts.Areas.Admin.Controllers
         {
             productsStorage.Add(ProductModel.ToProduct(product));
             var products = productsStorage.GetAll();
-            return View("Index", products);
+            return View(nameof(Index), products);
         }
 
         public IActionResult Edit(int id)
@@ -59,7 +59,7 @@ namespace VseTShirts.Areas.Admin.Controllers
         public ActionResult SaveСhanges(ProductModel newProduct)
         {
             productsStorage.EditProduct(newProduct.Id, ProductModel.ToProduct(newProduct));
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

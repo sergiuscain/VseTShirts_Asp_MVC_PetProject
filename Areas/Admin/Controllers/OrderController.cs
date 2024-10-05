@@ -22,13 +22,13 @@ namespace VseTShirts.Areas.Admin.Controllers
         public IActionResult UpdateStatus(int id, OrderStatus status)
         {
             ordersStorage.UpdateStatus(id, status);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult DelOrder(int id)
         {
             ordersStorage.RemoveById(id);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
     }

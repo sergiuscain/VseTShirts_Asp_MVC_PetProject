@@ -34,7 +34,7 @@ namespace VseTShirts.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 rolesStorage.Add(role);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(role);
         }
@@ -42,7 +42,7 @@ namespace VseTShirts.Areas.Admin.Controllers
         public ActionResult Remove(string name)
         {
             rolesStorage.Remove(rolesStorage.GetByName(name));
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }
