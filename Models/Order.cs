@@ -9,7 +9,6 @@ namespace VseTShirts.Models
         private static int idNumerator = 0;
         public int Id { get; set; }
 
-        public User User { get; set; }
 
         [Required(ErrorMessage = "Обязательное поле")]
         [MinLength(2, ErrorMessage = "Имя слишком короткое")]
