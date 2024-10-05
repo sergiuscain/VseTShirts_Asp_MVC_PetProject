@@ -1,7 +1,38 @@
-﻿<div class="row">
-    @await Html.PartialAsync("AdminLeftMenu")
+﻿@model List<UserAccount>
 
-    <div class="col-9">
-        <h3>Список товаров:</h3>
-    </div>
+<div class="row">
+     @await Html.PartialAsync("AdminLeftMenu")
+    @if (Model is null || Model.Count < 1)
+    {
+        <div class="col-3 btn border-danger">
+             <h4 class="align-content-center">Упс, Список пользователей пуст</h4>
+        </div>
+    }
+    else
+    {
+        <div class="col-9">
+            <h3>Список пользователей:</h3>
+           <table class="table table-striped">
+            <tr>
+                <th>Логин</th>
+                <th>Email</th>
+                <th>ID</th>
+                <th>Заблокировать пользователя</th>
+            </tr>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Id</td>
+                    <td><a class="btn btn-danger"
+                        asp-area="Admin"
+                        asp-controller="User"
+                        asp-action="Block"
+                        asp-route-name="@user.UserName">Block</a></td>
+                </tr>
+            }
+         </table>
+       </div>
+    } 
 </div>

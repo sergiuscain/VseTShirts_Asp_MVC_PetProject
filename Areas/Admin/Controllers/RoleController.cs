@@ -31,7 +31,7 @@ namespace VseTShirts.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("Name", "Роль уже существует!");
             }
-            if (ModelState.IsValid)
+            else if (ModelState.IsValid)
             {
                 rolesStorage.Add(role);
                 return RedirectToAction(nameof(Index));

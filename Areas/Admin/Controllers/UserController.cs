@@ -6,15 +6,16 @@ namespace VseTShirts.Areas.Admin.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
-        private readonly IRolesStorage rolesStorage;
-        public UserController(IRolesStorage rolesStorage)
+        private readonly IAccountManager _accountManager;
+        public UserController(IAccountManager _accountManager)
         {
-            this.rolesStorage = rolesStorage;
+            this._accountManager = _accountManager;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var users = _accountManager.GetAll();
+            return View(users);
         }
     }
 }

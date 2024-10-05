@@ -15,6 +15,7 @@ namespace VseTShirts
             builder.Services.AddSingleton<IProductsStorage ,ProductsInMemoryStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
+            builder.Services.AddSingleton<IAccountManager, AccountInMemoryManager>();
             builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
             builder.Host.UseSerilog((context, configuration) => configuration
                 .ReadFrom.Configuration(context.Configuration)

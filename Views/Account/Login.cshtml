@@ -1,8 +1,8 @@
 ﻿@model LoginModel
 
 <form method="post">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div class="col text-center">
+    <div class="col text-center  border-primary">
+         <div class="validation btn text-danger" asp-validation-summary="All"></div>
     <div>
          <label asp-for="UserName" ><h5>Логин:</h5></label>
             <br />
@@ -21,11 +21,17 @@
          <input asp-for="isRemembMe"/>
      </div>
      <div>
-        <button class="border-success col-3" type="submit" name="submit" asp-controller="Accaunt" asp-action="Login">Войти</button>
+        <button class="border-success col-3" type="submit" asp-area="" asp-controller="Account" asp-action="Login">Войти</button>
      </div>
      <div>
-        <a  href="/Accaunt/ResetPassword" class="btn shadow">Сброс пароля.</a>
-         <a class="btn shadow" href="/Accaunt/Register" target="_blank">Регистрация.</a>
+        <a 
+        asp-area=""
+        asp-controller="Account"
+        asp-action="ResetPassword" class="btn shadow">Сброс пароля.</a>
+         <a class="btn shadow" 
+             asp-area=""
+               asp-controller="Account"
+               asp-action="Register" target="_blank">Регистрация.</a>
      </div>
 </div>
 </form>
