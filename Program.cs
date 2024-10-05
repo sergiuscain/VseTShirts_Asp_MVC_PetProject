@@ -1,4 +1,5 @@
 using VseTShirts.Models;
+using Serilog;
 
 namespace VseTShirts
 {
@@ -15,8 +16,13 @@ namespace VseTShirts
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
             builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
+            builder.Host.UseSerilog((context, configuration) => configuration
+                .ReadFrom.Configuration(context.Configuration)
+                .Enrich.WithProperty("ApplicationName", "Online Shop"));
 
             var app = builder.Build();
+
+            app.UseSerilogRequestLogging();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
