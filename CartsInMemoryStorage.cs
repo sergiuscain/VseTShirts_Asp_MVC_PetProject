@@ -1,6 +1,4 @@
-﻿
-
-namespace VseTShirts.Models
+﻿namespace VseTShirts.Models
 {
     public class CartsInMemoryStorage : ICartsStorage
     {

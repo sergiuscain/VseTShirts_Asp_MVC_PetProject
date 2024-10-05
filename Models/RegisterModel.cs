@@ -2,7 +2,7 @@
 
 namespace VseTShirts.Models
 {
-    public class Role
+    public class RegisterModel
     {
         [Required(ErrorMessage ="Обязательное поле")]
         [MinLength(3, ErrorMessage = "Минимум 3 символа!!")]

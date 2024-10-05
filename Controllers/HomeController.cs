@@ -34,9 +34,9 @@ namespace VseTShirts.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Compare(int productId)
+        public IActionResult Compare(int Id)
         {
-            var product1 = productStorage.GetById(productId);
+            var product1 = productStorage.GetById(Id);
             if (comparedProducts.products[0] == null)
             {
                 comparedProducts.products[0] = product1;

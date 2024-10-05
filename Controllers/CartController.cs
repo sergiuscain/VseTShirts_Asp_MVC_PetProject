@@ -18,21 +18,21 @@ namespace VseTShirts.Controllers
             var cart = cartsStorage.GetCart(Constants.UserId);
             return View(cart);
         }
-        public IActionResult Add(int productId)
+        public IActionResult Add(int Id)
         {
-            var product = productStorage.GetById(productId);
+            var product = productStorage.GetById(Id);
             cartsStorage.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult Remove(int productId)
+        public IActionResult Remove(int Id)
         {
-            var product = productStorage.GetById(productId);
+            var product = productStorage.GetById(Id);
             cartsStorage.Remove(product, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult RemovePosition(int productId)
+        public IActionResult RemovePosition(int Id)
         {
-            var product = productStorage.GetById(productId);
+            var product = productStorage.GetById(Id);
             cartsStorage.RemovePosition(product, Constants.UserId);
             return RedirectToAction("Index");
         }

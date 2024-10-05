@@ -1,4 +1,6 @@
-﻿namespace VseTShirts.Models
+﻿using VseTShirts.Areas.Admin.Models;
+
+namespace VseTShirts.Models
 {
     public class RolesInMemoryStorage : IRolesStorage
     {

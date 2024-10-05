@@ -13,7 +13,7 @@
          <label asp-for="Description">Введите Описание роли: </label>
         <input asp-for="Description">
          <div><span asp-validation-for="Description" /></div>
-        <button type="submit" asp-controller="Admin" asp-action="AddRole">Создать</button>
+        <button type="submit" asp-area="Admin" asp-controller="Role" asp-action="Add">Создать</button>
     </div>
 </form>
 </div>
