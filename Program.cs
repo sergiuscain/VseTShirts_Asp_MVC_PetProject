@@ -1,5 +1,7 @@
 using VseTShirts.Models;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
+using VseTShirts.DB;
 
 namespace VseTShirts
 {
@@ -9,10 +11,17 @@ namespace VseTShirts
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //Получаем строку подключения к БД
+            string connection = builder.Configuration.GetConnectionString("VseTShirtsConnection");
+
+            //Добовляем контекст DbContext в качестве SQL сервиса
+            builder.Services.AddDbContext<DbContext>(options => 
+            options.UseSqlServer(connection) );
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<ICartsStorage ,CartsInMemoryStorage>();
-            builder.Services.AddSingleton<IProductsStorage ,ProductsInMemoryStorage>();
+            builder.Services.AddSingleton<IProductsStorage ,ProductsDBStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
             builder.Services.AddSingleton<IAccountManager, AccountInMemoryManager>();

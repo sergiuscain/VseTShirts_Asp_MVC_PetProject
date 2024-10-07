@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -18,7 +19,7 @@ namespace VseTShirts.Controllers
             var cart = cartsStorage.GetCart(Constants.UserId);
             return View(cart);
         }
-        public IActionResult Add(int Id)
+        public IActionResult Add(Guid Id)
         {
             var product = productStorage.GetById(Id);
             cartsStorage.Add(product, Constants.UserId);

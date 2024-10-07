@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -11,7 +12,7 @@ namespace VseTShirts.Controllers
         {
             this.productStorage = productsStorage;
         }
-        public IActionResult Index(int id)
+        public IActionResult Index(Guid id)
         {
             var product = productStorage.GetById(id);
             return View(product);

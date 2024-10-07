@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB;
 using VseTShirts.Models;
 
 namespace VseTShirts.Areas.Admin.Controllers
@@ -18,21 +19,21 @@ namespace VseTShirts.Areas.Admin.Controllers
             return View(products);
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(Guid Id)
         {
             productsStorage.Delete(Id);
             var products = productsStorage.GetAll();
             return View(nameof(Index), products);
         }
 
-        public IActionResult QuantitiReduce(int id) // Уменьшение количества товара на складе
+        public IActionResult QuantitiReduce(Guid id) // Уменьшение количества товара на складе
         {
             productsStorage.QuantitiReduce(id);
             var products = productsStorage.GetAll();
             return View(nameof(Index), products);
         }
 
-        public IActionResult QuantityIncrease(int id)  //Увеличение количества товара на складе
+        public IActionResult QuantityIncrease(Guid id)  //Увеличение количества товара на складе
         {
             productsStorage.QuantityIncrease(id);
             var products = productsStorage.GetAll();
@@ -45,20 +46,32 @@ namespace VseTShirts.Areas.Admin.Controllers
         }
         public IActionResult SaveAdd(ProductModel product)
         {
-            productsStorage.Add(ProductModel.ToProduct(product));
+            var _product = new DB.Models.Product //Надо будет это убрать!!
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Description = product.Description,
+                Cost = product.Cost,
+                ImagePath = product.ImagePath,
+                Category = product.Category,
+                Color = product.Color,
+                Size = product.Size
+            };
+            productsStorage.Add(_product);
             var products = productsStorage.GetAll();
             return View(nameof(Index), products);
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
             return View(productsStorage.GetById(id));
         }
 
         [HttpPost]
-        public ActionResult SaveСhanges(ProductModel newProduct)
+        public ActionResult SaveСhanges(DB.Models.Product newProduct)
         {
-            productsStorage.EditProduct(newProduct.Id, ProductModel.ToProduct(newProduct));
+            productsStorage.EditProduct(newProduct.Id, newProduct);
             return RedirectToAction(nameof(Index));
         }
     }

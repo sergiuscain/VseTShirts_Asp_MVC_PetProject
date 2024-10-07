@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VseTShirts.DB;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -8,9 +9,9 @@ namespace VseTShirts.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IProductsStorage productStorage;
-        public readonly ComparedProducts comparedProducts;
+        public readonly VseTShirts.DB.Models.ComparedProducts comparedProducts;
 
-        public HomeController(IProductsStorage productStorage, ComparedProducts comparedProducts)
+        public HomeController(IProductsStorage productStorage, VseTShirts.DB.Models.ComparedProducts comparedProducts)
         {
             this.productStorage = productStorage;
             this.comparedProducts = comparedProducts;
@@ -34,7 +35,7 @@ namespace VseTShirts.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Compare(int Id)
+        public IActionResult Compare(Guid Id)
         {
             var product1 = productStorage.GetById(Id);
             if (comparedProducts.products[0] == null)
