@@ -1,5 +1,8 @@
 using VseTShirts.Models;
+using VseTShirts.DB;
 using Serilog;
+using VseTShirts.DB;
+using Microsoft.EntityFrameworkCore;
 
 namespace VseTShirts
 {
@@ -8,6 +11,9 @@ namespace VseTShirts
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            string connection = builder.Configuration.GetConnectionString("VseTShirtsConnection");
+            object value = builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
