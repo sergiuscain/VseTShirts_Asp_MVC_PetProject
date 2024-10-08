@@ -14,7 +14,7 @@ namespace VseTShirts.Controllers
         public IActionResult Index(Guid id)
         {
             var product = productStorage.GetById(id);
-            return View(product);
+            return View(Mapping.ToProductViewModel(product));
         }
     }
 }

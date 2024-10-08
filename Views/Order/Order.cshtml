@@ -13,7 +13,7 @@
             <th>Стоимость 1 товара</th>
             <th>Цена</th>
         </tr>
-        @foreach (var item in Model.Cart.Position)
+        @foreach (var item in Model.Cart.Positions)
         {
             <tr>
                 <td><a href="/Product/Index?Id=@item.Product.Id">@item.Product.Name</a></td>

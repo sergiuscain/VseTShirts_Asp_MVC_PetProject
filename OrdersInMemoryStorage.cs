@@ -16,18 +16,18 @@ namespace VseTShirts
         }
         public List<Order> GetAll() => orders;
 
-        public Order GetById(int id)
+        public Order GetById(Guid id)
         {
             var order = orders.FirstOrDefault(o => o.Id == id);
             return order;
         }
 
-        public void UpdateStatus(int id, OrderStatus status)
+        public void UpdateStatus(Guid id, OrderStatus status)
         {
             orders.FirstOrDefault(o=> o.Id == id).Status = status;
         }
 
-        public void RemoveById(int id)
+        public void RemoveById(Guid id)
         {
             var removedOrder = orders.FirstOrDefault(o => o.Id == id);
             orders.Remove(removedOrder);

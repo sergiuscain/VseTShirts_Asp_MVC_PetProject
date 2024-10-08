@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB;
+using VseTShirts.DB.Models;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -15,58 +17,27 @@ namespace VseTShirts.Controllers
         }
         public IActionResult Index()
         {
-            var cart = cartsStorage.GetCart(Constants.UserId);
-            return View(cart);
+            var cart = cartsStorage.GetCartByUserId(Constants.UserId);
+            return View(Mapping.TOCartViewModel(cart));
         }
         public IActionResult Add(Guid Id)
         {
-            var product = productStorage.GetById(Id);
-            var product1ViewModel = new ProductViewModel
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-                ImagePath = product.ImagePath,
-                Quantity = product.Quantity,
-                Color = product.Color,
-                Size = product.Size,
-                Description = product.Description
-            };
-            cartsStorage.Add(product1ViewModel, Constants.UserId);
+            Product product = productStorage.GetById(Id);
+            
+            cartsStorage.Add(product.Id, Constants.UserId);
             return RedirectToAction("Index");
         }
         public IActionResult Remove(Guid Id)
         {
             var product = productStorage.GetById(Id);
-            var product1ViewModel = new ProductViewModel
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-                ImagePath = product.ImagePath,
-                Quantity = product.Quantity,
-                Color = product.Color,
-                Size = product.Size,
-                Description = product.Description
-            };
-            cartsStorage.Remove(product1ViewModel, Constants.UserId);
+            
+            cartsStorage.Remove(product.Id, Constants.UserId);
             return RedirectToAction("Index");
         }
         public IActionResult RemovePosition(Guid Id)
         {
-            var product = productStorage.GetById(Id);
-            var product1ViewModel = new ProductViewModel
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-                ImagePath = product.ImagePath,
-                Quantity = product.Quantity,
-                Color = product.Color,
-                Size = product.Size,
-                Description = product.Description
-            };
-            cartsStorage.RemovePosition(product1ViewModel, Constants.UserId);
+            Product product = productStorage.GetById(Id);
+            cartsStorage.RemovePosition(product.Id, Constants.UserId);
             return RedirectToAction("Index");
         }
         public IActionResult RemoveAll()

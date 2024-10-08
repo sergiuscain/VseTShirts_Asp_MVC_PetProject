@@ -19,13 +19,13 @@ namespace VseTShirts.Areas.Admin.Controllers
             List<Order> orders = ordersStorage.GetAll();
             return View(orders);
         }
-        public IActionResult UpdateStatus(int id, OrderStatus status)
+        public IActionResult UpdateStatus(Guid id, OrderStatus status)
         {
             ordersStorage.UpdateStatus(id, status);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult DelOrder(int id)
+        public IActionResult DelOrder(Guid id)
         {
             ordersStorage.RemoveById(id);
             return RedirectToAction(nameof(Index));

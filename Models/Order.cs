@@ -6,8 +6,7 @@ namespace VseTShirts.Models
 {
     public class Order
     {
-        private static int idNumerator = 0;
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
 
         [Required(ErrorMessage = "Обязательное поле")]
@@ -25,13 +24,7 @@ namespace VseTShirts.Models
 
         public DateTime DateAndTime { get; set; }
 
-        public Cart Cart { get; set; }
-        public Order ()
-        {
-            Id = idNumerator++;
-            DateAndTime = DateTime.Now;
-            Status = OrderStatus.Создан;
-        }
+        public CartViewModel Cart { get; set; }
     }
 }
 

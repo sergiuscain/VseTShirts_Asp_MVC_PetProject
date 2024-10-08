@@ -19,7 +19,7 @@ namespace VseTShirts.Controllers
 
         public IActionResult Index()
         {
-                return View(ProductViewModel.ToProductsViewModel(productStorage.GetAll()));
+                return View(Mapping.ToProductsViewModel(productStorage.GetAll()));
         }
 
         public IActionResult Privacy(string a)
@@ -39,12 +39,12 @@ namespace VseTShirts.Controllers
             if (comparedProducts.products[0] == null)
             {
                 
-                comparedProducts.products[0] = ProductViewModel.ToProductViewModel(product1);
+                comparedProducts.products[0] = Mapping.ToProductViewModel(product1);
                 return RedirectToAction("Index");
             }
             else if (comparedProducts.products[1] == null)
             {
-                comparedProducts.products[1] = ProductViewModel.ToProductViewModel(product1);
+                comparedProducts.products[1] = Mapping.ToProductViewModel(product1);
                 return View(comparedProducts.products);
             }
             return View(comparedProducts.products);
@@ -60,7 +60,7 @@ namespace VseTShirts.Controllers
         {
             var products = productStorage.GetAll();
             var newProductsList = products.Where(p => p.Name.ToLower().Contains(serachTxt.ToLower())).ToList();
-            return View("Index", ProductViewModel.ToProductsViewModel( newProductsList ));
+            return View("Index", Mapping.ToProductsViewModel( newProductsList ));
         }
     }
 }

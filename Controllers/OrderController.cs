@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB;
 using VseTShirts.Models;
 
 namespace VseTShirts.Controllers
@@ -21,14 +22,14 @@ namespace VseTShirts.Controllers
         [HttpPost]
         public IActionResult Buy(Order order)
         {
-            var cart = cartsStorage.GetCart(Constants.UserId);
-            order.Cart = cart;
+            var cart = cartsStorage.GetCartByUserId(Constants.UserId);
+            order.Cart = Mapping.TOCartViewModel( cart );
             ordersStorage.Add(order);
             cartsStorage.RemoveAll(Constants.UserId);
             return View(order);
         }
 
-        public IActionResult Order(int id)
+        public IActionResult Order(Guid id)
         {
             var order = ordersStorage.GetById(id);
             return View(order);

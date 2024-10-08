@@ -16,7 +16,7 @@ namespace VseTShirts.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
+            var products = Mapping.ToProductsViewModel( productsStorage.GetAll() );
             
             return View(products);
         }
@@ -24,22 +24,21 @@ namespace VseTShirts.Areas.Admin.Controllers
         public IActionResult Delete(Guid Id)
         {
             productsStorage.Delete(Id);
-             var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
+             var products = Mapping.ToProductsViewModel( productsStorage.GetAll() );
             return View(nameof(Index), products);
         }
 
         public IActionResult QuantitiReduce(Guid id) // Уменьшение количества товара на складе
         {
             productsStorage.QuantitiReduce(id);
-             var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
-            return View(nameof(Index), products);
+            return View(nameof(Index), Mapping.ToProductsViewModel( productsStorage.GetAll() ));
         }
 
         public IActionResult QuantityIncrease(Guid id)  //Увеличение количества товара на складе
         {
             productsStorage.QuantityIncrease(id);
             
-            return View(nameof(Index), ProductViewModel.ToProductsViewModel( productsStorage.GetAll() ));
+            return View(nameof(Index), Mapping.ToProductsViewModel( productsStorage.GetAll() ));
         }
 
         public IActionResult Add()
@@ -52,19 +51,19 @@ namespace VseTShirts.Areas.Admin.Controllers
             {
                 return View(product);
             }
-            productsStorage.Add(ProductViewModel.ToProduct(product));
+            productsStorage.Add(Mapping.ToProductDB(product));
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(Guid id)
         {
-            return View(ProductViewModel.ToProductViewModel( productsStorage.GetById(id) ));
+            return View(Mapping.ToProductViewModel( productsStorage.GetById(id) ));
         }
 
         [HttpPost]
         public ActionResult SaveСhanges(ProductViewModel newProduct)
         {
-            productsStorage.EditProduct(newProduct.Id, ProductViewModel.ToProduct( newProduct));
+            productsStorage.EditProduct(newProduct.Id, Mapping.ToProductDB( newProduct));
             return RedirectToAction(nameof(Index));
         }
     }

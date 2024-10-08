@@ -1,7 +1,6 @@
 using VseTShirts.Models;
 using VseTShirts.DB;
 using Serilog;
-using VseTShirts.DB;
 using Microsoft.EntityFrameworkCore;
 
 namespace VseTShirts
@@ -17,7 +16,7 @@ namespace VseTShirts
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<ICartsStorage ,CartsInMemoryStorage>();
+            builder.Services.AddTransient<ICartsStorage ,CartsDBStorage>();
             builder.Services.AddTransient<IProductsStorage ,ProductsDBStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
