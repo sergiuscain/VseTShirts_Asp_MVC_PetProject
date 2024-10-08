@@ -9,7 +9,7 @@
             return carts.FirstOrDefault(c => c.UserId == userId);
         }
 
-        public void Add(Product product, Guid userId)
+        public void Add(ProductViewModel product, Guid userId)
         {
 
             var existingCart = GetCart(userId);
@@ -33,7 +33,7 @@
             }
         }
 
-        public void Remove(Product product, Guid userId)
+        public void Remove(ProductViewModel product, Guid userId)
         {
             var cart = GetCart(userId);
             var cartItem = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);
@@ -47,7 +47,7 @@
                 carts.Remove(cart);
             }
         }
-        public void RemovePosition(Product product, Guid usertId)
+        public void RemovePosition(ProductViewModel product, Guid usertId)
         {
             var cart = GetCart(usertId);
             var removedCartPosition = cart.Position.FirstOrDefault(p => p.Product.Id == product.Id);

@@ -18,22 +18,55 @@ namespace VseTShirts.Controllers
             var cart = cartsStorage.GetCart(Constants.UserId);
             return View(cart);
         }
-        public IActionResult Add(int Id)
+        public IActionResult Add(Guid Id)
         {
             var product = productStorage.GetById(Id);
-            cartsStorage.Add(product, Constants.UserId);
+            var product1ViewModel = new ProductViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                ImagePath = product.ImagePath,
+                Quantity = product.Quantity,
+                Color = product.Color,
+                Size = product.Size,
+                Description = product.Description
+            };
+            cartsStorage.Add(product1ViewModel, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult Remove(int Id)
+        public IActionResult Remove(Guid Id)
         {
             var product = productStorage.GetById(Id);
-            cartsStorage.Remove(product, Constants.UserId);
+            var product1ViewModel = new ProductViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                ImagePath = product.ImagePath,
+                Quantity = product.Quantity,
+                Color = product.Color,
+                Size = product.Size,
+                Description = product.Description
+            };
+            cartsStorage.Remove(product1ViewModel, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult RemovePosition(int Id)
+        public IActionResult RemovePosition(Guid Id)
         {
             var product = productStorage.GetById(Id);
-            cartsStorage.RemovePosition(product, Constants.UserId);
+            var product1ViewModel = new ProductViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                ImagePath = product.ImagePath,
+                Quantity = product.Quantity,
+                Color = product.Color,
+                Size = product.Size,
+                Description = product.Description
+            };
+            cartsStorage.RemovePosition(product1ViewModel, Constants.UserId);
             return RedirectToAction("Index");
         }
         public IActionResult RemoveAll()

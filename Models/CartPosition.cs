@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public Product? Product { get; set; }
+        public ProductViewModel? Product { get; set; }
         public int Quantity { get; set; }
         public decimal Price
         {
@@ -13,7 +13,7 @@
                 return Product.Price* Quantity;
             }
         }
-        public CartPosition(Guid id, string name, Product? product, int quantity)
+        public CartPosition(Guid id, string name, ProductViewModel? product, int quantity)
         {
             Id = id;
             Name = name;

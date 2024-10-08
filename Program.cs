@@ -12,13 +12,13 @@ namespace VseTShirts
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            string connection = builder.Configuration.GetConnectionString("VseTShirtsConnection");
+            string connection = builder.Configuration.GetConnectionString("VseTShirts");
             object value = builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<ICartsStorage ,CartsInMemoryStorage>();
-            builder.Services.AddSingleton<IProductsStorage ,ProductsInMemoryStorage>();
+            builder.Services.AddTransient<IProductsStorage ,ProductsDBStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
             builder.Services.AddSingleton<IAccountManager, AccountInMemoryManager>();

@@ -11,7 +11,7 @@ namespace VseTShirts.Controllers
         {
             this.productStorage = productsStorage;
         }
-        public IActionResult Index(int id)
+        public IActionResult Index(Guid id)
         {
             var product = productStorage.GetById(id);
             return View(product);

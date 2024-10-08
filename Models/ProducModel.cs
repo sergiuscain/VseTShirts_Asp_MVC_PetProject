@@ -43,10 +43,5 @@ namespace VseTShirts.Models
         [MaxLength(4, ErrorMessage = "Введите размер одежды(XS/X/M/L/XL/XXL/XXXL)")]
         public string Size { get; set; }
 
-
-        public static Product ToProduct(ProductModel model)
-        {
-            return new Product(model.Name, model.Description, model.Price, model.Quantity, model.Cost, model.ImagePath, model.Category, model.Color, model.Size);
-        }
     }
 }

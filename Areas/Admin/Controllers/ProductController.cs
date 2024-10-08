@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VseTShirts.DB.Models;
 using VseTShirts.Models;
+
 
 namespace VseTShirts.Areas.Admin.Controllers
 {
@@ -14,51 +16,55 @@ namespace VseTShirts.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var products = productsStorage.GetAll();
+            var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
+            
             return View(products);
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(Guid Id)
         {
             productsStorage.Delete(Id);
-            var products = productsStorage.GetAll();
+             var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
             return View(nameof(Index), products);
         }
 
-        public IActionResult QuantitiReduce(int id) // Уменьшение количества товара на складе
+        public IActionResult QuantitiReduce(Guid id) // Уменьшение количества товара на складе
         {
             productsStorage.QuantitiReduce(id);
-            var products = productsStorage.GetAll();
+             var products = ProductViewModel.ToProductsViewModel( productsStorage.GetAll() );
             return View(nameof(Index), products);
         }
 
-        public IActionResult QuantityIncrease(int id)  //Увеличение количества товара на складе
+        public IActionResult QuantityIncrease(Guid id)  //Увеличение количества товара на складе
         {
             productsStorage.QuantityIncrease(id);
-            var products = productsStorage.GetAll();
-            return View(nameof(Index), products);
+            
+            return View(nameof(Index), ProductViewModel.ToProductsViewModel( productsStorage.GetAll() ));
         }
 
         public IActionResult Add()
         {
             return View();
         }
-        public IActionResult SaveAdd(ProductModel product)
+        public IActionResult SaveAdd(ProductViewModel product)
         {
-            productsStorage.Add(ProductModel.ToProduct(product));
-            var products = productsStorage.GetAll();
-            return View(nameof(Index), products);
+            if (!ModelState.IsValid)
+            {
+                return View(product);
+            }
+            productsStorage.Add(ProductViewModel.ToProduct(product));
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(Guid id)
         {
-            return View(productsStorage.GetById(id));
+            return View(ProductViewModel.ToProductViewModel( productsStorage.GetById(id) ));
         }
 
         [HttpPost]
-        public ActionResult SaveСhanges(ProductModel newProduct)
+        public ActionResult SaveСhanges(ProductViewModel newProduct)
         {
-            productsStorage.EditProduct(newProduct.Id, ProductModel.ToProduct(newProduct));
+            productsStorage.EditProduct(newProduct.Id, ProductViewModel.ToProduct( newProduct));
             return RedirectToAction(nameof(Index));
         }
     }
