@@ -62,10 +62,6 @@
             <input type="text" id="ImagePath" name="ImagePath" value="/img/2.jpg" required><br>
         </div>
         <div>
-            <label asp-for="Id">Id:</label>
-            <input asp-for="Id" disabled="disabled" value="@Guid.NewGuid()"><br>
-        </div>
-        <div>
             <button class="btn border-success" type="submit" asp-area="Admin" asp-controller="Product" asp-action="SaveAdd">Создать продукт</button>
         </div>
 
