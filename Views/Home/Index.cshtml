@@ -15,11 +15,11 @@
     <div class="col-3 card shadow">
         <div class="card-body">
             <a style="color:black" 
-                asp-area="" 
-                asp-controller="Product"
-                asp-action="Index"
-                asp-all-route-id="@product.Id">
-                <h5>@product.Name</h5></a>
+            asp-area="" 
+            asp-controller="Product"
+            asp-action="Index"
+            asp-all-route-id="@product.Id">
+            <h5>@product.Name</h5></a>
 
             <a class="btn btn-success" 
             asp-area=""
@@ -33,7 +33,7 @@
             asp-controller="Favorite"
             asp-action="Add"
             asp-route-id="@product.Id" 
-            role="button" >В избранное</a>
+            role="button">В избранное</a>
 
             <img style="column-fill" width="200" src="@product.ImagePath" alt="@product.ImagePath" />
             <h5>@product.Price</h5>

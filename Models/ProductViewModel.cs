@@ -25,8 +25,7 @@ namespace VseTShirts.Models
         public int Quantity { get; set; } //количество
 
         [Required(ErrorMessage = "Обязательное поле")]
-        [Range(50,99999,ErrorMessage = "Некорректная цена")]
-        public decimal Cost { get; set; } //себестоимость
+        public string Sex { get; set; } //себестоимость
 
         [Required(ErrorMessage = "Обязательное поле")]
         public string ImagePath { get; set; } //патч изображения товара

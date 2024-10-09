@@ -18,6 +18,7 @@ namespace VseTShirts
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ICartsStorage ,CartsDBStorage>();
             builder.Services.AddTransient<IProductsStorage ,ProductsDBStorage>();
+            builder.Services.AddTransient<IFavoriteProductsStorage, FavoriteProductsDBStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
             builder.Services.AddSingleton<ComparedProducts>();
             builder.Services.AddSingleton<IAccountManager, AccountInMemoryManager>();
