@@ -19,9 +19,22 @@
                 asp-controller="Product"
                 asp-action="Index"
                 asp-all-route-id="@product.Id">
-                <h5>@product.Name</h5>
-            </a>
-            <a class="btn btn-success" href="/home/compare?productId=@product.Id">Сравнить</a>
+                <h5>@product.Name</h5></a>
+
+            <a class="btn btn-success" 
+            asp-area=""
+            asp-controller="Home"
+            asp-action="compare"
+            asp-route-id="@product.Id" 
+            role="button" >Сравнить</a>
+
+            <a class="btn btn-success" 
+            asp-area=""
+            asp-controller="Favorite"
+            asp-action="Add"
+            asp-route-id="@product.Id" 
+            role="button" >В избранное</a>
+
             <img style="column-fill" width="200" src="@product.ImagePath" alt="@product.ImagePath" />
             <h5>@product.Price</h5>
             <a class="btn btn-success" 
