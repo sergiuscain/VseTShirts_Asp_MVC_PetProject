@@ -19,7 +19,7 @@ namespace VseTShirts
             builder.Services.AddTransient<ICartsStorage ,CartsDBStorage>();
             builder.Services.AddTransient<IProductsStorage ,ProductsDBStorage>();
             builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
-            builder.Services.AddSingleton<ComparedProductsViewModel>();
+            builder.Services.AddSingleton<ComparedProducts>();
             builder.Services.AddSingleton<IAccountManager, AccountInMemoryManager>();
             builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
             builder.Host.UseSerilog((context, configuration) => configuration

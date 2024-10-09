@@ -10,7 +10,7 @@ namespace VseTShirts.Controllers
         private readonly IProductsStorage productStorage;
         public readonly ComparedProducts comparedProducts;
 
-        public HomeController(IProductsStorage productStorage, ComparedProductsViewModel comparedProducts)
+        public HomeController(IProductsStorage productStorage, ComparedProducts comparedProducts)
         {
             this.productStorage = productStorage;
             this.comparedProducts = comparedProducts;
